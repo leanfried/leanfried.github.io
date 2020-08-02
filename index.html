@@ -10,10 +10,14 @@ body {
 	font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	color:#2f3f4d;
 	background-color:#ebecf0;
-	line-height:1.7
+	line-height:1.7;
 	margin:0
 }
 
+.edsection {
+	padding-bottom:100px; 
+	overflow:hidden;
+}
 
 .paper {
 	background-color:#ffffff
@@ -22,11 +26,11 @@ body {
 	display:block;
 	float:left;
 	overflow:hidden;
+	height:auto;
 }
 
 .papergraphics{
-	min-width:200px;
-	width:20%;
+	width:200px;
 	padding-right:10px;
 	margin:10px;
 	float:left;
@@ -41,11 +45,10 @@ body {
 
 .papertext {
 	margin:0;
-	max-width:65%;
 	min-width:180px;
-	padding:5px;
-	float:left;
-	display:inline-block;
+	padding:15px;
+	height:auto;
+	overflow:hidden;
 }
 
 h1 {
@@ -102,6 +105,7 @@ a:hover{
 }
 
 
+
 </style>
 </head>
 
@@ -127,86 +131,114 @@ a:hover{
 		
 	</div>
 	
-<div style="margin:40px; padding-bottom:100px; overflow:hidden">
-	<h1> Graduate work </h1>
-	<h3> (2020) Ph.D., Materials, University of California Santa Barbara </h3>
-	<img src="rupturingdroplet.gif" class="paperimg" style="width:90%; max-width:800px"></img>
-	<div class="paper">
-		<div class="papergraphics">
-			
-			<a href="LF_dissertation.pdf" class="linkdiv">Dissertation</a>
+<div style="margin:40px; overflow:hidden">
+	<div class="edsection">
+		<h1> Graduate work </h1>
+		<h3> (2020) Ph.D., Materials, University of California Santa Barbara </h3>
+		<img src="rupturingdroplet.gif" class="paperimg" style="width:90%; max-width:800px"></img>
+		<div class="paper">
+			<div class="papergraphics">
+				
+				<a href="LF_dissertation.pdf" class="linkdiv">Dissertation</a>
+			</div>
+			<div class="papertext">
+				My graduate research centered on direct ink writing (DIW) with acoustophoresis (DIWA), a 3D printing technique that enables fabrication of composite materials with tailorable properties. In DIW, ink flows through a nozzle, is written onto the print bed, and is solidified after deposition using methods such as light, heat, solvent evaporation, or change in chemical environment. DIWA modifies conventional DIW by using sound waves inside the nozzle to move around particles in the ink. By moving particles in the nozzle, we can create gradients in properties like stiffness, strength, and electrical conductivity in the printed part.
+			</div>
 		</div>
-		<div class="papertext">
-			My graduate research centered on direct ink writing (DIW) with acoustophoresis (DIWA), a 3D printing technique that enables fabrication of composite materials with tailorable properties. In DIW, ink flows through a nozzle, is written onto the print bed, and is solidified after deposition using methods such as light, heat, solvent evaporation, or change in chemical environment. DIWA modifies conventional DIW by using sound waves inside the nozzle to move around particles in the ink. By moving particles in the nozzle, we can create gradients in properties like stiffness, strength, and electrical conductivity in the printed part.
+		
+		<div class="paper">
+			<div class="papergraphics">
+				<img src="prim1.png" class="paperimg"></img>
+				<a href="https://doi.org/10.1016/j.sna.2017.06.016" class="linkdiv">Paper</a>
+				<a href="https://doi.org/10.1007/978-3-319-51493-2_14" class="linkdiv">Proceedings</a>
+				<a href="https://github.com/leanfried/acoustic_control" class="linkdiv">Code and data</a>
+				<a href="ASME-poster.pdf" class="linkdiv">Poster</a>
+			</div>
+			<div class="papertext">
+				<h3> How should we choose materials for direct ink writing with acoustophoresis? </h3>
+				This paper explores the material properties and printing parameters one needs to consider when choosing materials for DIWA. We use digital image analysis of particles within single filaments to assess how well we can acoustically focus particles.
+			</div>
+		</div>
+		
+		<div class="paper">
+			<div class="papergraphics">
+				<img src="prim2.png" class="paperimg"></img>
+				<a href="https://doi.org/10.1016/j.jcis.2018.05.110" class="linkdiv">Paper</a>
+				<a href="http://doi.org/10.1021/bk-2019-1315.ch008" class="linkdiv">Book chapter</a>
+				<a href="http://dx.doi.org/10.17632/2236m9683h.1" class="linkdiv">Code and data</a>
+				<a href="soft-matter-2019.pdf" class="linkdiv">Poster</a>
+			</div>
+			<div class="papertext">
+				<h3> How do we keep low-viscosity filaments from breaking up? </h3>
+				DIWA requires lower-viscosity inks than conventional DIW inks. At these lower viscosities, surface tension can cause filaments to break into droplets right after they leave the print nozzle. Using digital image analysis, we monitor filament stability and nozzle wetting on the fly and anticipate when the filament is about to rupture. Using fluid dynamics models from slot die coating, we can select combinations of printing parameters which should result in a stable filament.
+			</div>
+		</div>
+		
+		<div class="paper">
+			<div class="papergraphics">
+				<img src="prim3.png" class="paperimg"></img>
+				<a href="https://doi.org/10.1021/acsapm.0c00126" class="linkdiv">Paper</a>
+				<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
+			</div>
+			<div class="papertext">
+				<h3> How do printed structures change after they leave the nozzle? </h3>
+				We can use viscoelastic liquid-like solids to support low-viscosity inks during direct ink writing. However, these support materials can deform the printed filament, leading to changes in the printed structure at various steps in the printing process.
+			</div>
+		</div>
+		
+		<div class="paper">
+			<div class="papergraphics">
+				<img src="prim4.png" class="paperimg"></img>
+				<a href="https://doi.org/10.1016/j.addma.2020.101192" class="linkdiv">Paper</a>
+				<a href="https://absuploads.aps.org/presentation.cfm?pid=15704" class="linkdiv">Talk (video)</a>
+				<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
+			</div>
+			<div class="papertext">
+				<h3> Why do printed structures depend on writing direction? </h3>
+				Direct ink writing methods which tailor the internal structure of the filament can lead to inconsistent printed material properties depending on the nozzle’s writing direction. We construct a model that can be used to identify sources of these direction dependencies, including shifts due to nozzle misalignment, miscalibration of the printer motors, fluid flowing around the nozzle, and reshaping and rotation of the filament after it leaves the nozzle.
+			</div>
+		</div>
+		
+		<div class="paper">
+			<div class="papergraphics">
+				<img src="prim5.png" class="paperimg"></img>
+				<a href="https://doi.org/10.1016/j.bprint.2020.e00086" class="linkdiv">Paper</a>
+				<a href="https://arxiv.org/abs/2003.05046" class="linkdiv">Preprint</a>
+				<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
+			</div>
+			<div class="papertext">
+				<h3> Do printed structures change at corners? </h3>
+				The properties of a printed part can change at corners due to surface tension, retracing of the print path at corners, and insufficient deceleration. We can mitigate those inconsistencies using the design of the print path and print speed.
+			</div>
 		</div>
 	</div>
 	
-	<div class="paper">
-		<div class="papergraphics">
-			<img src="prim1.png" class="paperimg"></img>
-			<a href="https://doi.org/10.1016/j.sna.2017.06.016" class="linkdiv">Paper</a>
-			<a href="https://doi.org/10.1007/978-3-319-51493-2_14" class="linkdiv">Proceedings</a>
-			<a href="https://github.com/leanfried/acoustic_control" class="linkdiv">Code and data</a>
-			<a href="ASME-poster.pdf" class="linkdiv">Poster</a>
+	<div class="edsection">
+		<h1> Undergraduate work </h1>
+		<h3> (2015) B.S., Materials Science and Engineering, Northwestern University </h3>
+		<div class="paper">
+			<div class="papergraphics">
+				<a href="https://doi.org/10.1016/j.snb.2016.02.057" class="linkdiv">Paper</a>
+			</div>
+			<div class="papertext">
+				<h3>How can we design better biomolecule sensors?</h3>
+				<h4>Internship at Rush University, 2015</h4>
+				One way to design microfluidic biomolecule sensors is by attaching some sort of receptor to a charge sensitive surface such as a transistor. When the molecule of interest binds to the receptors, the transistor reports a change in voltage. Through simulations, we find that using electrolytes with large, monovalent cations will improve the sensitivity of this type of sensor.
+			</div>
 		</div>
-		<div class="papertext">
-			<h3> How should we choose materials for direct ink writing with acoustophoresis? </h3>
-			This paper explores the material properties and printing parameters one needs to consider when choosing materials for DIWA. We use digital image analysis of particles within single filaments to assess how well we can acoustically focus particles.
-		</div>
-	</div>
-	
-	<div class="paper">
-		<div class="papergraphics">
-			<img src="prim2.png" class="paperimg"></img>
-			<a href="https://doi.org/10.1016/j.jcis.2018.05.110" class="linkdiv">Paper</a>
-			<a href="http://doi.org/10.1021/bk-2019-1315.ch008" class="linkdiv">Book chapter</a>
-			<a href="http://dx.doi.org/10.17632/2236m9683h.1" class="linkdiv">Code and data</a>
-			<a href="soft-matter-2019.pdf" class="linkdiv">Poster</a>
-		</div>
-		<div class="papertext">
-			<h3> How do we keep low-viscosity filaments from breaking up? </h3>
-			DIWA requires lower-viscosity inks than conventional DIW inks. At these lower viscosities, surface tension can cause filaments to break into droplets right after they leave the print nozzle. Using digital image analysis, we monitor filament stability and nozzle wetting on the fly and anticipate when the filament is about to rupture. Using fluid dynamics models from slot die coating, we can select combinations of printing parameters which should result in a stable filament.
-		</div>
-	</div>
-	
-	<div class="paper">
-		<div class="papergraphics">
-			<img src="prim3.png" class="paperimg"></img>
-			<a href="https://doi.org/10.1021/acsapm.0c00126" class="linkdiv">Paper</a>
-			<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
-		</div>
-		<div class="papertext">
-			<h3> How do printed structures change after they leave the nozzle? </h3>
-			We can use viscoelastic liquid-like solids to support low-viscosity inks during direct ink writing. However, these support materials can deform the printed filament, leading to changes in the printed structure at various steps in the printing process.
+		
+		<div class="paper">
+			<div class="papergraphics">
+				<img src="stereo 4.png" class="paperimg" style="width:190px; margin:10px"></img>
+				<a href="LF_Thesis_2015" class="linkdiv">Thesis</a>
+			</div>
+			<div class="papertext">
+				<h3>What do chitons see?</h3>
+				<h4>Senior Thesis at Northwestern University, 2015</h4>
+				Chitons are a type of mollusk which live in tidal zones and have a shell composed of aragonite, a phase of calcium carbonate. The shell of the chiton <i>Acanthopleura granulata</i> is dotted with eye-like structures called ocelli. The ocelli have lenses made of aragonite, making the chiton one of only three known species to use crystalline lenses for vision. Using microscopy and simulations, we explore how this unique lens grows and may enable chitons to see.
+			</div>
 		</div>
 	</div>
-	
-	<div class="paper">
-		<div class="papergraphics">
-			<img src="prim4.png" class="paperimg"></img>
-			<a href="https://doi.org/10.1016/j.addma.2020.101192" class="linkdiv">Paper</a>
-			<a href="https://absuploads.aps.org/presentation.cfm?pid=15704" class="linkdiv">Talk (video)</a>
-			<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
-		</div>
-		<div class="papertext">
-			<h3> Why do printed structures depend on writing direction? </h3>
-			Direct ink writing methods which tailor the internal structure of the filament can lead to inconsistent printed material properties depending on the nozzle’s writing direction. We construct a model that can be used to identify sources of these direction dependencies, including shifts due to nozzle misalignment, miscalibration of the printer motors, fluid flowing around the nozzle, and reshaping and rotation of the filament after it leaves the nozzle.
-		</div>
-	</div>
-	
-	<div class="paper">
-		<div class="papergraphics">
-			<img src="prim5.png" class="paperimg"></img>
-			<a href="https://doi.org/10.1016/j.bprint.2020.e00086" class="linkdiv">Paper</a>
-			<a href="https://arxiv.org/abs/2003.05046" class="linkdiv">Preprint</a>
-			<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
-		</div>
-		<div class="papertext">
-			<h3> Do printed structures change at corners? </h3>
-			The properties of a printed part can change at corners due to surface tension, retracing of the print path at corners, and insufficient deceleration. We can mitigate those inconsistencies using the design of the print path and print speed.
-		</div>
-	</div>
-	
 </div>
 
 </body>
