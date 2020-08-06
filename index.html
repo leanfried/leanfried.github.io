@@ -14,13 +14,39 @@ body {
 	margin:0
 }
 
+#header{
+	min-height:70vh;
+	padding:10%;
+	background:#2f3f4d;
+	overflow:visible;
+}
+
+.headerdiv{
+	height:auto;
+	width:100%;
+	color:#ffffff;
+	margin:0 auto;
+}
+
+#bio{
+	
+}
+
+#topbuttonbox{
+	text-align:center; 
+	overflow:auto; 
+	padding-top:50px
+}
+
 .edsection {
 	padding-bottom:100px; 
 	overflow:hidden;
+	max-width:1200px;
+	margin: 0 auto;
 }
 
 .paper {
-	background-color:#ffffff
+	background-color: #ffffff;
 	padding:10%;
 	margin-top:100px;
 	display:block;
@@ -39,28 +65,53 @@ body {
 	display:inline-block;
 }
 
+
+
 .paperimg {
 	width:100px;
+}
+
+.paperimgwide{
+	width:200px; 
+	margin:10px
 }
 
 .papertext {
 	margin:0;
 	min-width:180px;
-	padding:15px;
+	padding-left:30px;
+	padding-top:0px;
 	height:auto;
 	overflow:hidden;
 }
 
+
+#headerdiv{
+	display:block;
+	float:left;
+	overflow:hidden;
+	height:auto;
+}
+
+
+#topimage{
+	border-radius:50%; 
+}
+
+
 h1 {
 	color:#333333;
 	font-size:40pt;
+	margin-bottom:5px;
 }
 
 h3 {
 	font-weight:normal;
 	font-size:18pt;
 	color:#333333;
-	margin-top:0
+	margin-top:0;
+	margin-bottom:5px;
+	padding-top:0;
 }
 
 p {
@@ -83,7 +134,7 @@ a:hover{
 	font-size:14pt;
 	text-align:center;
 	min-width:180px;
-	padding:5px;
+	padding:10px;
 	margin:10px;
 	float:left;
 /*	font-weight:bold; */
@@ -106,42 +157,45 @@ a:hover{
 
 
 
+
 </style>
 </head>
 
 
 <body>
 
-<div style="min-height:50vh; height:100%; padding:10%; background:#2f3f4d">
-		<h1 style="line-height:1; color:#ffffff">Leanne Friedrich</h1>
-		<h3 style="color:#ffffff">Postdoc at the National Institute of Standards and Technology</h3>
-		<div style="color:#ffffff">
-			3D printing researcher currently exploring the physics of fluid movement in embedded direct ink writing
-			
+<div id="header">
+	<div class="headerdiv">
+		<div class="papergraphics" id="headerdivimage">
+			<img src="lfphoto.jpeg" class="paperimgwide" id="topimage">
 		</div>
-		<div style="padding-top:20px">
-			<a class="nakeddark" href="mailto:leanne.friedrich@nist.gov">Leanne.Friedrich@nist.gov</a>
-		</div>	
-		<div style="text-align:center; overflow:auto; padding-top:50px">
-			<a href="https://scholar.google.com/citations?user=maWdc_4AAAAJ&hl=en" class="linkdiv">Google scholar</a>
-			<a href="https://orcid.org/0000-0002-0382-3980" class="linkdiv">ORCiD</a>
-			<a href="https://www.linkedin.com/in/leanne-friedrich-969b8947/" class="linkdiv">LinkedIn</a>
-			<a href="https://github.com/leanfried" class="linkdiv">Github</a>
+		<div class="papertext">
+			<h1 style="line-height:1; color:#ffffff">Leanne Friedrich</h1>
+			<h3 style="color:#ffffff">Postdoc at the National Institute of Standards and Technology</h3>
+			3D printing researcher currently exploring the physics of fluid movement in embedded direct ink writing. she/her/hers
 		</div>
-		
 	</div>
+	<div class="headerdiv" id="topbuttonbox">
+		<a href="https://scholar.google.com/citations?user=maWdc_4AAAAJ&hl=en" class="linkdiv">Google scholar</a>
+		<a href="https://orcid.org/0000-0002-0382-3980" class="linkdiv">ORCiD</a>
+		<a href="https://www.linkedin.com/in/leanne-friedrich-969b8947/" class="linkdiv">LinkedIn</a>
+		<a href="https://github.com/leanfried" class="linkdiv">Github</a>
+		<a href="mailto:leanne.friedrich@nist.gov" class="linkdiv">Leanne.Friedrich@nist.gov</a>
+	</div>			
+</div>
 	
 <div style="margin:40px; overflow:hidden">
 	<div class="edsection">
 		<h1> Graduate work </h1>
 		<h3> (2020) Ph.D., Materials, University of California Santa Barbara </h3>
-		<img src="rupturingdroplet.gif" class="paperimg" style="width:90%; max-width:800px"></img>
+		
 		<div class="paper">
 			<div class="papergraphics">
-				
+				<img src="rupturingdroplet.gif" class="paperimgwide"></img>
 				<a href="LF_dissertation.pdf" class="linkdiv">Dissertation</a>
 			</div>
 			<div class="papertext">
+				<h3>How can we control the properties of 3D printed composites?</h3>
 				My graduate research centered on direct ink writing (DIW) with acoustophoresis (DIWA), a 3D printing technique that enables fabrication of composite materials with tailorable properties. In DIW, ink flows through a nozzle, is written onto the print bed, and is solidified after deposition using methods such as light, heat, solvent evaporation, or change in chemical environment. DIWA modifies conventional DIW by using sound waves inside the nozzle to move around particles in the ink. By moving particles in the nozzle, we can create gradients in properties like stiffness, strength, and electrical conductivity in the printed part.
 			</div>
 		</div>
@@ -218,7 +272,9 @@ a:hover{
 		<h3> (2015) B.S., Materials Science and Engineering, Northwestern University </h3>
 		<div class="paper">
 			<div class="papergraphics">
+				<img src="snbtoc.jpg" class="paperimgwide"></img>
 				<a href="https://doi.org/10.1016/j.snb.2016.02.057" class="linkdiv">Paper</a>
+				<a href="https://github.com/leanfried/Sensors" class="linkdiv">Code and data</a>
 			</div>
 			<div class="papertext">
 				<h3>How can we design better biomolecule sensors?</h3>
@@ -229,8 +285,10 @@ a:hover{
 		
 		<div class="paper">
 			<div class="papergraphics">
-				<img src="stereo 4.png" class="paperimg" style="width:190px; margin:10px"></img>
-				<a href="LF_Thesis_2015" class="linkdiv">Thesis</a>
+				<img src="stereo 4.png" class="paperimgwide"></img>
+				<a href="LF_Thesis_2015.pdf" class="linkdiv">Thesis</a>
+				<a href="https://github.com/leanfried/MEAP" class="linkdiv">Code and data</a>
+				<a href="caursposter.pdf" class="linkdiv">Poster</a>
 			</div>
 			<div class="papertext">
 				<h3>What do chitons see?</h3>
