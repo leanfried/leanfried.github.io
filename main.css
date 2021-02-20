@@ -1,0 +1,197 @@
+:root {
+  /* --main-bg-color: #ebecf0; */
+  --main-bg-color:#ffffff;
+  --dark-blue: #2f3f4d;
+  /* --light-blue: #a9dde8;  */
+  --light-blue:#89c7c9;
+  /* --yellow:#eae98f; */
+  --yellow:#dbb658
+}
+
+body {
+	font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	color:var(--dark-blue);
+	background-color:var(--main-bg-color);
+	line-height:1.7;
+	margin:0;
+	word-wrap: break-word;
+}
+
+.header{
+	/* background:var(--dark-blue); */
+	overflow:visible;
+	color:var(--dark-blue);
+}
+
+#frontheader{
+	/* min-height:70vh; */
+	padding:5%;
+}
+
+.headerdiv{
+	height:auto;
+	width:100%;
+
+	margin:0 auto;
+}
+
+#bio{
+	
+}
+
+#topbuttonbox{
+	text-align:center; 
+	overflow:auto; 
+}
+
+
+.iconwrap:hover{
+	background-color:#ffffff;
+	text-decoration:none;
+}
+
+
+svg{
+	fill:var(--light-blue);
+}
+
+svg:hover{
+	fill:var(--yellow);
+}
+
+.linkdiv{
+	/* color: var(--dark-blue); */
+	color:#ffffff;
+	background-color:var(--light-blue);
+	font-size:14pt;
+	text-align:center;
+	min-width:180px;
+	padding:10px;
+	margin:5px;
+	float:left;
+}
+
+.linkdiv:hover{
+	background-color:var(--yellow);
+}
+
+
+
+
+
+.edsection {
+	padding-left:5%;
+	padding-right:5%;
+	padding-bottom:100px; 
+	overflow:hidden;
+	max-width:1200px;
+	min-width:200px;
+	margin: 0 auto;
+	width:90%;
+}
+
+.paper {
+	background-color: #ffffff;
+	padding:5%;
+	margin-top:100px;
+	display:block;
+	float:left;
+	overflow:hidden;
+	height:auto;
+}
+
+.papergraphics{
+	width:200px;
+	padding-right:40px;
+
+	float:left;
+	margin:0;
+	text-align:center;
+	display:inline-block;
+}
+
+
+
+.paperimg {
+	width:100px;
+}
+
+.paperimgwide{
+	width:200px; 
+	margin:10px
+}
+
+.papertext {
+	margin:0;
+	min-width:180px;
+	padding-left:0px;
+	padding-top:0px;
+	height:auto;
+	overflow:hidden;
+}
+
+
+#headerdiv{
+	display:block;
+	float:left;
+	overflow:hidden;
+	height:auto;
+}
+
+
+#topimage{
+	border-radius:50%; 
+}
+
+
+h1 {
+	color:#333333;
+	font-size:40pt;
+	margin-bottom:5px;
+}
+
+h3 {
+	font-weight:normal;
+	font-size:18pt;
+	color:#333333;
+	margin-top:0;
+	margin-bottom:5px;
+	padding-top:0;
+}
+
+p {
+	font-size:14pt;
+}
+
+
+a {
+	text-decoration:none;
+/*	font-weight:bold; */
+}
+
+a:hover{
+	background-color:var(--yellow);
+}
+
+.nakeddark{
+ /* this is for naked links on dark backgrounds */
+	font-size:14pt;
+	color: #ffffff;
+	padding: 5px;
+}
+
+.nakeddark:hover{
+	color:var(--dark-blue)
+}
+
+.icon{
+	display:inline-block;
+	width: 50px;
+	height: 50px;
+	
+}
+
+
+
+
+

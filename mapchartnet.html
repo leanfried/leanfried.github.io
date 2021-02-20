@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>United States - Counties - MapChart</title>
+    <meta name="title" content="United States - Counties - MapChart">
+    <meta name="description" content="Create a custom map of US Counties. Color an editable map, fill in the legend, and download it for free. Make a county map for each state or your own US travel map.">
+    <meta property="og:site_name" content="MapChart" />
+
+    <meta property="og:title" content="United States - Counties - MapChart" />
+    <meta property="og:description" content="Create a custom map of US Counties. Color an editable map, fill in the legend, and download it for free. Make a county map for each state or your own US travel map." />
+    <meta property="og:image" content="https://mapchart.net/dist/img/og/logo-usa-counties.png" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+
+    <meta name="theme-color" content="#054950" />
+
+
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/mapchartnet.min.css" type="text/css">
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/font-awesome.min.css?v=1.0.1" type="text/css">
+
+
+
+
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/layout-wide.min.css?v=1.1" type="text/css">
+
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/spectrum.css" type="text/css">
+
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/select2.min.css" type="text/css" />
+
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/jquery.contextMenu.min.css" type="text/css">
+
+    <link rel="stylesheet" href="https://mapchart.net/dist/css/jquery.svgzoomer.min.css" type="text/css">
+
+
+
+    <link rel="canonical" href="https://mapchart.net/usa-counties.html" />
+
+
+    <script src="https://cmp.uniconsent.com/v2/stub.min.js"></script>
+    <script async src='https://cmp.uniconsent.com/v2/a8d3ae8537/cmp.js'></script>
+
+
+
+    <!-- Script -->
+
+    <script>
+        (function waitGEO() {
+            var readyGEO;
+            if (window['UnicI'] && window['UnicI'].geo && window['UnicI'].geo !== '-') {
+                readyGEO = true;
+                console.log(window['UnicI'].geo);
+                if (window['UnicI'].geo === 'EU') {
+                    if (document.getElementById("unic-gdpr")) {
+                        document.getElementById("unic-gdpr").style.display = 'block';
+                    }
+                }
+                if (window['UnicI'].geo === 'CA') {
+                    if (document.getElementById("unic-ccpa")) {
+                        document.getElementById("unic-ccpa").style.display = 'block';
+                    }
+                }
+            }
+            if (!readyGEO) {
+                setTimeout(waitGEO, 200);
+            }
+        })();
+    </script>
+
+
+</head>
+
+<body>
+    <div class="loader"></div>
+    
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="uploadModalLabel">Save / Upload Configuration </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h4> <i class="fa fa-download"></i> Save </h4>
+                        <p> To save the current map configuration (colors of countries-states, borders, legend data), click the button below to <strong>download a small <kbd>mapchartSAVE.txt</kbd> file containing all the information.</strong> </p>
+                        <a role="button" class="btn btn-new btn-newD icon-save-config" id="save-config">Save map configuration</a>
+                    </div>
+                    <div id="uploadDiv">
+                        <h4> <i class="fa fa-upload"></i> Upload </h4>
+                        <p> When you are ready to continue your work, <strong>copy and paste below the contents of the <kbd>mapchartSAVE.txt</kbd> file you previously downloaded.</strong>
+                        <p><em>WARNING! The current map will be cleared of all data.</em></p>
+                        <textarea class="form-control" id="uploadData" rows="8" placeholder="Paste the file content here . . ."></textarea>
+                        <button type="submit" id="upload-config" class="btn btn-new btn-newD icon-upload-config" data-dismiss="modal">Upload Map Configuration</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-new btn-newC icon-close" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="container-fluid">
+
+
+        <header class="row">
+            <h1>Let's be real, folks</h1>
+            <h3>There are too many states. </h3>
+            <p> Let's just do a lil bit of combining.</p>
+            <p> You can also use Excel to speed up the creation process for this map. Full instructions <a href="https://blog.mapchart.net/tutorials/using-excel-to-speed-up-map-creation-on-mapchart/" target="_blank" rel="noopener">here</a>.</p>
+        </header>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12 " id="mapContainer">
+                <canvas id="canvas1"></canvas>
+
+                <div id="rsr"> </div>
+
+
+                <div id="svgControls">
+                    <h5>CONTROLS</h5>
+                    <p><img src="dist/img/mouse-wheel.svg" alt="mouse wheel"> : Zoom in/out</p>
+                    <p><img src="dist/img/mouse-drag.svg" alt="mouse wheel"> : Move Map</p>
+                    <p>You can also use W,A,S,D,I,O on your keyboard or the controls on the right.</p>
+                    <p>You can still change Fill Color, click on counties to paint them, etc.</p>
+                    <button type="button" class="btn btn-new btn-sm btn-newD icon-arrow-left" id="exitZoom">Exit Zoom</button>
+                    <br />
+                    <button type="button" class="btn btn-new btn-sm btn-newC icon-undo" id="resetZoom">Reset Zoom</button>
+                </div>
+                <div id="showSvgControls">
+                    <button type="button" class="btn btn-show-controls" id="startZoom"> ZOOM <br>MODE</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" id="tools">
+            <div class="col-md-4 col-sm-12 col-xs-12 " id="coloring-tools">
+                <span class="step"> Step 1: Coloring/Editing the Map</span>
+                <div class="row" id="colorpicker-row">
+                    <div class="col-md-12 draggable">
+                        <h4><i class="fa fa-arrow-circle-right"></i> Single Selection </h4>
+
+                        <span id="colorpicker-drag-handle" title="Move the color picker around."><i class="fa fa-handle"></i></span>
+
+                        <p class="mb-10"> Select the color you want and click on a county on the map. Right-click on it to remove its color or hide it. <a role="button" data-toggle="collapse" href="#advanced-coloring" aria-expanded="false" aria-controls="advanced-coloring">Advanced... </a>
+                        </p>
+                        <div class="collapse" id="advanced-coloring">
+                            <div class="well">
+                                <p>Hold <strong>Ctrl</strong> and move your mouse over the map to quickly color several counties. Holding <strong>Ctrl + Shift</strong> has the opposite result. </p>
+
+                                <p>Use <i class="fa fa-handle"></i> to detach and move the color picker around the page.</p>
+
+                            </div>
+                        </div>
+                        <form class="form-inline">
+                            <div class="col-md-6 col-sm-6 col-xs-6 p0">
+                                <label for="fillpicker" class="control-label">
+                                    <kbd> Select Color:</kbd>
+                                </label>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 p0">
+                                <div class="form-group" id="fillpicker-form">
+                                    <input id="fillpicker" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><i class="fa fa-arrow-circle-right"></i> Color all Counties of a State </h4>
+                        <p> Select a state and click <strong>COLOR STATE</strong> to color all its counties with the selected color.</p>
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-5 pt-5 pt-10-xs">
+                                <select class="form-control" id="color-single-list">
+                                    <option disabled="disabled" selected="selected">State to Color</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-add" id="color-single">COLOR STATE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><i class="fa fa-arrow-circle-right"></i> Search for a County and Color it</h4>
+                        <p> Search for the county you want and click <strong>COLOR COUNTY</strong> to fill it with the current Fill Color. To remove the color of the selected county, choose <strong>REMOVE COLOR </strong>.</p>
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-5 pt-5 pt-10-xs">
+                                <select class="search-entity" placeholder="">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-isolate" id="color-from-search">COLOR COUNTY</button>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-restore" id="uncolor-from-search">REMOVE COLOR </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h4><i class="fa fa-arrow-circle-right"></i> Make a Map of a Single State (with county names shown) </h4>
+                        <p> Select the state that you want to isolate and click <strong>ISOLATE STATE</strong>. The single state map also features the <strong>county names on the map</strong>. To return to the whole map view again, choose <strong>RESTORE States</strong>.</p>
+
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-5 pt-5 pt-10-xs">
+                                <select class="form-control" id="state-to-isolate">
+                                    <option disabled="disabled" selected="selected">State to Isolate</option>
+                                    <option>AK</option>
+                                    <option>AL</option>
+                                    <option>AR</option>
+                                    <option>AZ</option>
+                                    <option>CA</option>
+                                    <option>CO</option>
+                                    <option>CT</option>
+                                    <option>DE</option>
+                                    <option>FL</option>
+                                    <option>GA</option>
+                                    <option>HI</option>
+                                    <option>IA</option>
+                                    <option>ID</option>
+                                    <option>IL</option>
+                                    <option>IN</option>
+                                    <option>KS</option>
+                                    <option>KY</option>
+                                    <option>LA</option>
+                                    <option>MA</option>
+                                    <option>MD</option>
+                                    <option>ME</option>
+                                    <option>MI</option>
+                                    <option>MN</option>
+                                    <option>MO</option>
+                                    <option>MS</option>
+                                    <option>MT</option>
+                                    <option>NC</option>
+                                    <option>ND</option>
+                                    <option>NE</option>
+                                    <option>NH</option>
+                                    <option>NJ</option>
+                                    <option>NY</option>
+                                    <option>NM</option>
+                                    <option>NV</option>
+                                    <option>OH</option>
+                                    <option>OK</option>
+                                    <option>OR</option>
+                                    <option>PA</option>
+                                    <option>RI</option>
+                                    <option>SC</option>
+                                    <option>SD</option>
+                                    <option>TN</option>
+                                    <option>TX</option>
+                                    <option>UT</option>
+                                    <option>VA</option>
+                                    <option>VT</option>
+                                    <option>WA</option>
+                                    <option>WI</option>
+                                    <option>WV</option>
+                                    <option>WY</option>
+                                    <option>DC</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-isolate" id="isolate-state">ISOLATE STATE </button>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-restore" disabled id="restore-states">RESTORE States </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><i class="fa fa-arrow-circle-right"></i> Isolate One or More States </h4>
+                        <p> Fill the field below with the <em>abbreviations of the states (comma-separated)</em> you want to isolate on the map and click <strong>ISOLATE</strong>. All other states will be hidden. Use the zoom tool to enlarge the map and center it on the remaining states.</p>
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-5 pt-5 pt-10-xs">
+
+                                <input type="text" class="form-control" id="listToIsolate" placeholder="Example: CA,NY,FL,WY">
+
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-isolate" id="isolateFromList">ISOLATE</button>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3 pt-10 p0-xs">
+                                <button type="button" class="btn btn-new btn-sm btn-newD icon-restore" disabled id="showAll">SHOW ALL </button>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger fade in" id="isolate-alert"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><i class="fa fa-arrow-circle-right"></i> More Options </h4>
+
+                        <form class="more-options pt-10">
+                            <div>
+                                <label for="backgroundpicker" class="control-label">
+                                    <kbd> Background: </kbd>
+                                </label>
+                                <input id="backgroundpicker" type="text" class="form-control" />
+                            </div>
+                            <div>
+                                <label for="backgroundpicker" class="control-label">
+                                    <kbd> Borders Color:</kbd>
+                                </label>
+                                <input id="borderpicker" type="text" class="form-control" />
+                            </div>
+                            <div>
+                                <label for="no-borders" class="control-label">
+                                    <kbd>Borders:</kbd>
+                                </label>
+                                <input class="tgl tgl-light" id="no-borders" type="checkbox" checked="checked">
+                                <label class="tgl-btn" for="no-borders"></label>
+                            </div>
+                        </form>
+
+                        <form class="more-options pt-10">
+                            <div>
+                                <label for="show-state-borders" class="control-label">
+                                    <kbd>State Borders:</kbd>
+                                </label>
+                                <input class="tgl tgl-light" id="show-state-borders" type="checkbox" checked="checked">
+                                <label class="tgl-btn" for="show-state-borders"></label>
+                            </div>
+                            <div>
+                                <label for="show-state-abbrs" class="control-label">
+                                    <kbd>Show State Abbr.:</kbd>
+                                </label>
+                                <input class="tgl tgl-light" id="show-state-abbrs" type="checkbox">
+                                <label class="tgl-btn" for="show-state-abbrs"></label>
+                            </div>
+                            <div>
+                                <label for="show-highways" class="control-label">
+                                    <kbd>Show Highways:</kbd>
+                                </label>
+                                <input class="tgl tgl-light" id="show-highways" type="checkbox">
+                                <label class="tgl-btn" for="show-highways"></label>
+                            </div>
+                        </form>
+                        <form class="more-options pt-10">
+                            <div>
+                                <label for="show-names" class="control-label">
+                                    <kbd>Show County Names*:</kbd>
+                                </label>
+                                <input class="tgl tgl-light" id="show-names" type="checkbox" checked="checked">
+                                <label class="tgl-btn" for="show-names"></label>
+                            </div>
+                            <div>
+                                <span style="font-size:92%">* Available only on single state maps</span>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12" id="legend-area">
+                <span class="step"> Step 2: Choosing the Legend </span>
+                <div class="row mb-10">
+                    <div class="col-md-12">
+                        <p> Add the title you want for the map's legend and choose a label for each color group. Change the color for all counties in a group by clicking on it. </p>
+                        <form class="form-inline mt-10" id="map-title-area">
+                            <div>
+                                <label for="map-title" class="control-label">
+                                    <kbd>Legend Title: </kbd>
+                                </label>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="map-title">
+                                </div>
+                            </div>
+                            <div>
+                                <select class="form-control input-sm" title="Choose whether a legend will be shown on the map" id="legend-status">
+                                    <option value="show">Show Legend</option>
+                                    <option value="title">Title Only</option>
+                                    <option value="hide">Hide Legend</option>
+                                </select>
+                            </div>
+                            <div>
+                                <a role="button" data-toggle="collapse" href="#advanced-legend" aria-expanded="false" aria-controls="advanced-legend">Style... </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="collapse" id="advanced-legend">
+                    <div class="well">
+                        <span>Legend Style</span>
+                        <label for="legend-font" class="control-label">
+                            <kbd> Font:</kbd>
+                        </label>
+                        <select class="form-control input-sm" title="Choose the legend's font" id="legend-font">
+                        </select>
+                        <label for="legendfontcolorpicker" class="control-label">
+                            <kbd> Font Color:</kbd>
+                        </label>
+                        <input id="legendfontcolorpicker" type="text" class="form-control" />
+                        <label for="legendbgpicker" class="control-label">
+                            <kbd> Background:</kbd>
+                        </label>
+                        <input id="legendbgpicker" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="legend">
+                        <table class="table-condensed table-bordered " id="legend-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-2">Color</th>
+                                    <th class="col-md-8" id="description"> Label </th>
+                                    <th class="col-md-2"> Remove </th>
+                                </tr>
+                            </thead>
+                            <tbody id="legend-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12" id="buttons">
+                <span class="step"> Step 3: Getting the Map </span>
+                <div class="row" id="buttonsDiv">
+                    <div class="col-md-12">
+                        <p> When ready, select <strong>Preview Map</strong>. To download the map: <strong>Right Click -> Save Image </strong> or select <strong>Download Map</strong>. In case you want to change something, select <strong>Edit</strong>. To start over, select <strong>Clear All</strong>. </p>
+                        <div class="text-center">
+                            <a role="button" class="btn btn-new btn-newE btn-block icon-download" id="download">Download Map</a>
+                            <button type="button" class="btn btn-new btn-newA btn-block icon-convert" id="convert">Preview Map</button>
+                            <button type="button" class="btn btn-new btn-newB btn-block icon-edit" id="edit" disabled> Edit</button>
+                            <button type="button" class="btn btn-new btn-newC btn-block icon-delete" id="clear"> Clear All</button>
+                            <a class="btn" id="undo-clear">Undo <i class="fa fa-undo" aria-hidden="true"></i></a>
+                            <button class="btn btn-new btn-newD btn-block icon-downup" id="downup" data-toggle="modal" data-target="#uploadModal">Save - Upload map configuration</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 ad-cont">
+                        <div class="lbl">Advertisements</div>
+
+                        <!-- TAGNAME: Desktop_Rectangle_300x250 -->
+                        <!-- /8095840/.2_A.37915.4_mapchart.net_tier1 -->
+                        <div id="div-gpt-ad-mapchartnet37915">
+                        </div>
+                        <!-- TAGNAME: Mobile_Bottom_300x250 -->
+                        <!-- /8095840/.2_A.37919.4_mapchart.net_tier1 -->
+                        <div id="div-gpt-ad-mapchartnet37919">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+ 
+
+    </footer>
+    <script src="https://mapchart.net/dist/js/jquery-3.2.1.min.js"></script>
+    <script src="https://mapchart.net/dist/js/jquery.browser.min.js"></script>
+    <script src="https://mapchart.net/dist/js/jquery-ui.min.js"></script>
+    <script src="https://mapchart.net/dist/js/constants.js?v=1.2.8"></script>
+
+    <script src="https://mapchart.net/dist/js/svgzoomer.min.js?v=1.7"></script>
+
+
+    <script src="https://mapchart.net/dist/js/spectrum.min.js"></script>
+    <script src="https://mapchart.net/dist/js/jquery.contextMenu.min.js"></script>
+    <script src="https://mapchart.net/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://mapchart.net/dist/js/select2.min.js"></script>
+
+    <script src="dist/js/mapchart.min.js"></script>
+
+
+
+
+    <script>
+        var pageSpecificSetup = function() {
+            $('#state_abbr, #state_lines, #highways').hide();
+
+            $('#addStateColor').click(function() {
+                addStateColor($('#selectedRegion').val());
+            });
+
+            $('#show-state-borders').change(function() {
+                if ($(this).is(":checked")) {
+                    $('#State_borders').show();
+                } else {
+                    $('#State_borders').hide();
+                }
+            });
+
+            $('#show-highways').change(function() {
+                if ($(this).is(":checked")) {
+                    $('#highways').show();
+                } else {
+                    $('#highways').hide();
+                }
+            });
+
+            $('#show-state-abbrs').change(function() {
+                if ($(this).is(":checked")) {
+                    $('#state_abbr, #state_lines').show();
+                } else {
+                    $('#state_abbr, #state_lines').hide();
+                }
+            });
+
+            $('#show-names').change(function() {
+                if (this.checked) {
+                    $('#Department_Names').show();
+                } else {
+                    $('#Department_Names').hide();
+                }
+            });
+        };
+
+
+        function addStateColor(state) {
+            $('#map>path').each(function() {
+                if (this.id.slice(-2) === state) {
+                    mapchart.click(this);
+                    this.setAttribute('stroke-width', '0.3px');
+                }
+            });
+        };
+
+        function isolateState(state) {
+            // Find the smallest and largest X and Y values for all paths of a state, in order to
+            // calculate the middle of the state (approximately) and move it altogether.
+            conf.legendFactor = 5;
+            conf.img2x = 550;
+            conf.img2y = 400;
+            conf.img3x = 600;
+            conf.img3y = 3400;
+
+            var mapElement = document.getElementById("map");
+            var mapW = parseInt(mapElement.getAttribute("width"));
+            var mapH = parseInt(mapElement.getAttribute("height"));
+            var fileURL = "svg/counties/" + state + ".txt?v='1.3'";
+
+            $.ajax({
+                url: fileURL,
+                dataType: "text",
+                success: function(data) {
+                    var namesPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    namesPath.setAttribute("fill", "#000000");
+                    namesPath.setAttribute("id", "Department_Names");
+                    namesPath.setAttribute("d", data);
+                    namesPath.setAttribute("transform", "matrix(1.341, 0, 0, 1.341, 181, 139)");
+                    namesPath.setAttribute("stroke", "none");
+                    mapElement.appendChild(namesPath);
+                }
+            });
+
+            toRestoreState = state;
+            var minX = mapW;
+            var minY = mapH;
+            var maxX = maxY = 0;
+            $('#map>path').each(function() {
+                if (this.id.substr(-2) !== state) {
+                    $(this).hide();
+                } else {
+                    var x = $(this)[0].getBBox().x;
+                    var y = $(this)[0].getBBox().y;
+
+                    if (x < minX) {
+                        minX = x;
+                    }
+                    if (y < minY) {
+                        minY = y;
+                    }
+                    if (x > maxX) {
+                        maxX = x;
+                    }
+                    if (y > maxY) {
+                        maxY = y;
+                    }
+                }
+            });
+
+            // destX/Y:             where we want each path to land, center of the svg map
+            // min + max/2 :        the middle of the whole state, in order to move all counties together
+            // factor:              the translate multiplier, default 1.3394, with 1.75 even the bigger states fit 
+            var factor = 1.75;
+            var destX = mapW / 2 / factor;
+            var destY = mapH / 2 / factor;
+            var toMoveX = (destX - (minX + maxX) / 2) * factor;
+            var toMoveY = (destY - (minY + maxY) / 2) * factor;
+
+            $('#map>path').each(function() {
+                if ($(this).attr('id').substr(-2) == state) {
+                    $(this).attr('transform', 'matrix(1.75, 0, 0, 1.75, ' + toMoveX + ', ' + toMoveY + ') ');
+                }
+            });
+
+            // UI changes.
+            $('#show-state-borders').prop('disabled', true);
+            $('#isolate-state').prop('disabled', true).css('color', '#fff');
+            $('#restore-states').prop('disabled', false).css('color', '#fff');
+        };
+
+        function restoreStates() {
+            conf.legendFactor = 0;
+            conf.img2x = 5870;
+            conf.img2y = 2600;
+            conf.img3x = 4500;
+            conf.img3y = 4200;
+            $('#Department_Names').remove();
+            $('#State_borders').show();
+            $('#show-names').prop('checked', true);
+
+            // Apply the original transform matrix value.
+            $('#map>path').each(function() {
+                if ($(this).attr('id').substr(-2) == toRestoreState) {
+                    $(this).removeAttr('transform');
+                } else {
+                    if (mapchart.verifyPath($(this).attr('id'))) {
+                        $(this).show();
+                    }
+                }
+            });
+
+
+            // UI changes.
+            $('#show-state-borders').prop('disabled', false);
+            $('#isolate-state').prop('disabled', false).css('color', '#fff');
+            $('#restore-states').prop('disabled', true).css('color', '#fff');
+        };
+    </script>
+
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-58176163-1');
+    </script>
+
+</body>
+
+</html>
