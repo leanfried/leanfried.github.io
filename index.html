@@ -39,10 +39,10 @@
 		<div class="papergraphics" id="headerdivimage">
 			<img src="lfphoto.jpeg" class="paperimgwide" id="topimage">
 		</div>
-		<div class="papertext">
+		<div class="papertext" style="min-width:300px">
 			<p><span style="font-size:2em; font-weight:bold">Dr. Leanne Friedrich</span> <span >(she/her) is a postdoc at the National Institute of Standards and Technology, researching <b>embedded 3D printing</b>.
 			
-			<p>Leanne's work is driven by the fundamental relationships between the <b>knobs we turn</b> on the printer, the <b>materials we choose</b>, and the <b>printed part</b>. By understanding rheology, fluid mechanics, and interfacial science, we can understand why some prints work, and others don't.</p>
+			<p>My work is driven by the fundamental relationships between the <b>knobs we turn</b> on the printer, the <b>materials we choose</b>, and the <b>printed part</b>. By understanding rheology, fluid mechanics, and interfacial science, we can understand why some prints work, and others don't.</p>
 		</div>
 	</div>
 	<div class="headerdiv" id="topbuttonbox" style="padding-top:50px">
@@ -83,15 +83,15 @@
 				<a href="LF_dissertation.pdf" class="linkdiv">Dissertation</a>
 			</div>
 			<div class="papertext">
-				In the last couple of decades, there has been an explosion of new 3D printing techniques and printable materials. Leanne's graduate research focused on a new <b>multi-material 3D printing technique</b> that can print inks with tailorable properties. This means we could create parts that have variations in stiffness, strength, or electrical conductivity with only a single pot of ink.
+				In recent years, there has been an explosion of new 3D printing techniques and printable materials. Leanne's graduate research focused on a new <b>multi-material 3D printing technique</b> that can print inks with tailorable properties. This means we could create parts that have variations in stiffness, strength, or electrical conductivity with only a single pot of ink.
 				
-				In <b>direct ink writing with acoustophoresis</b>, we use sound waves inside of a print nozzle to align and move around particles inside of the nozzle. It's like a <a href="https://www.youtube.com/watch?v=CR_XL192wXw&ab_channel=SteveMould">Chladni plate</a>, but inside of the needle of a syringe. This means that the <b>sound waves are a design tool!</b> For example, if there are carbon fibers inside of the nozzle, the sound waves can align the fibers and pack them together, making the part stiffer. If we remove the sound waves, the fibers randomly orient themselves, making the part more compliant. By turning the sound waves on and off during a print, we can create parts that bend where we want them to bend, and stay rigid where we want them to be rigid.
+				In <b>direct ink writing with acoustophoresis</b>, we use sound waves inside of a print nozzle to align and move particles inside of the nozzle. This means that the <b>sound waves are a design tool!</b> For example, if there are carbon fibers inside of the nozzle, the sound waves can align the fibers and pack them together, making the part stiffer. If we remove the sound waves, the fibers randomly orient themselves, making the part more compliant. By turning the sound waves on and off during a print, we can create parts that bend where we want them to bend, and stay rigid where we want them to be rigid.
 				
 			</div>
 		</div>
 		
-		<div class="paper">
-			<h3> How should we choose materials for direct ink writing with acoustophoresis? </h3>
+		<div class="paperthin">
+			<h3> How can we control particle placement inside a single filament? </h3>
 			<div class="papergraphics">
 				<img src="prim1.png" class="paperimg"></img>
 				<a href="https://doi.org/10.1016/j.sna.2017.06.016" class="linkdiv">Paper</a>
@@ -99,67 +99,46 @@
 				<a href="https://github.com/leanfried/acoustic_control" class="linkdiv">Code and data</a>
 				<a href="ASME-poster.pdf" class="linkdiv">Poster</a>
 			</div>
-			<div class="papertext">
-				
-				
-				
-				This paper explores the material properties and printing parameters one needs to consider when choosing materials for DIWA. We use digital image analysis of particles within single filaments to assess how well we can acoustically focus particles.
-			</div>
+		
 		</div>
 		
-		<div class="paper">
-			<h3> How do we keep low-viscosity filaments from breaking up? </h3>
-			<div class="papergraphics">
+		<div class="paperthin">
+			<h3> How do we prevent filaments from breaking up? </h3>
+			<div class="papergraphicsthin">
 				<img src="prim2.png" class="paperimg"></img>
 				<a href="https://doi.org/10.1016/j.jcis.2018.05.110" class="linkdiv">Paper</a>
 				<a href="http://doi.org/10.1021/bk-2019-1315.ch008" class="linkdiv">Book chapter</a>
 				<a href="http://dx.doi.org/10.17632/2236m9683h.1" class="linkdiv">Code and data</a>
 				<a href="soft-matter-2019.pdf" class="linkdiv">Poster</a>
 			</div>
-			<div class="papertext">
-				
-				DIWA requires lower-viscosity inks than conventional DIW inks. At these lower viscosities, surface tension can cause filaments to break into droplets right after they leave the print nozzle. Using digital image analysis, we monitor filament stability and nozzle wetting on the fly and anticipate when the filament is about to rupture. Using fluid dynamics models from slot die coating, we can select combinations of printing parameters which should result in a stable filament.
-			</div>
 		</div>
 		
-		<div class="paper">
-			<h3> How do printed structures change after they leave the nozzle? </h3>
-			<div class="papergraphics">
+		<div class="paperthin">
+			<h3> How do filaments interact with each other? </h3>
+			<div class="papergraphicsthin">
 				<img src="prim3.png" class="paperimg"></img>
 				<a href="https://doi.org/10.1021/acsapm.0c00126" class="linkdiv">Paper</a>
 				<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
 			</div>
-			<div class="papertext">
-				
-				We can use viscoelastic liquid-like solids to support low-viscosity inks during direct ink writing. However, these support materials can deform the printed filament, leading to changes in the printed structure at various steps in the printing process.
-			</div>
 		</div>
 		
-		<div class="paper">
-			<h3> Why do printed structures depend on writing direction? </h3>
-			<div class="papergraphics">
+		<div class="paperthin">
+			<h3> Why does particle placement depend on writing direction? </h3>
+			<div class="papergraphicsthin">
 				<img src="prim4.png" class="paperimg"></img>
 				<a href="https://doi.org/10.1016/j.addma.2020.101192" class="linkdiv">Paper</a>
 				<a href="https://absuploads.aps.org/presentation.cfm?pid=15704" class="linkdiv">Talk (video)</a>
 				<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
 			</div>
-			<div class="papertext">
-				
-				Direct ink writing methods which tailor the internal structure of the filament can lead to inconsistent printed material properties depending on the nozzle’s writing direction. We construct a model that can be used to identify sources of these direction dependencies, including shifts due to nozzle misalignment, miscalibration of the printer motors, fluid flowing around the nozzle, and reshaping and rotation of the filament after it leaves the nozzle.
-			</div>
 		</div>
 		
-		<div class="paper">
-			<h3> Do printed structures change at corners? </h3>
-			<div class="papergraphics">
+		<div class="paperthin">
+			<h3> How do printed filaments change at corners? </h3>
+			<div class="papergraphicsthin">
 				<img src="prim5.png" class="paperimg"></img>
 				<a href="https://doi.org/10.1016/j.bprint.2020.e00086" class="linkdiv">Paper</a>
 				<a href="https://arxiv.org/abs/2003.05046" class="linkdiv">Preprint</a>
 				<a href="http://dx.doi.org/10.17632/b6ybb9ytb5.1" class="linkdiv">Code and data</a>
-			</div>
-			<div class="papertext">
-				
-				The properties of a printed part can change at corners due to surface tension, retracing of the print path at corners, and insufficient deceleration. We can mitigate those inconsistencies using the design of the print path and print speed.
 			</div>
 		</div>
 	</div>
@@ -177,7 +156,7 @@
 			</div>
 			<div class="papertext">
 				
-				One way to design microfluidic biomolecule sensors is by attaching some sort of receptor to a charge sensitive surface such as a transistor. When the molecule of interest binds to the receptors, the transistor reports a change in voltage. Through simulations, we find that using electrolytes with large, monovalent cations will improve the sensitivity of this type of sensor.
+				One way to design microfluidic biomolecule sensors is by attaching a receptor to a charge-sensitive surface such as a transistor. When the molecule of interest binds to the receptors, the transistor reports a change in voltage. Through simulations, we find that using electrolytes with large, monovalent cations will improve the sensitivity of this type of sensor.
 			</div>
 		</div>
 		
@@ -192,7 +171,7 @@
 			</div>
 			<div class="papertext">
 				
-				Chitons are a type of mollusk which live in tidal zones and have a shell composed of aragonite, a phase of calcium carbonate. The shell of the chiton <i>Acanthopleura granulata</i> is dotted with eye-like structures called ocelli. The ocelli have lenses made of aragonite, making the chiton one of only three known species to use crystalline lenses for vision. Using microscopy and simulations, we explore how this unique lens grows and may enable chitons to see.
+				Chitons are a type of mollusk which live in tidal zones and have a shell composed of aragonite, a phase of calcium carbonate. The shell of the chiton <i>Acanthopleura granulata</i> is dotted with eye-like structures called ocelli. The ocelli have lenses made of aragonite, making the chiton one of only three known species to use crystalline lenses for vision. Using microscopy and simulations, we explore how this unique lens grows and may allow chitons to see.
 			</div>
 		</div>
 	</div>

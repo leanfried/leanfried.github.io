@@ -31,7 +31,7 @@ body {
 .headerdiv{
 	height:auto;
 	width:100%;
-
+	max-width:1000px;
 	margin:0 auto;
 }
 
@@ -65,7 +65,7 @@ svg:hover{
 	background-color:var(--light-blue);
 	font-size:14pt;
 	text-align:center;
-	min-width:180px;
+	min-width:170px;
 	padding:10px;
 	margin:5px;
 	float:left;
@@ -93,11 +93,24 @@ svg:hover{
 .paper {
 	background-color: #ffffff;
 	padding:5%;
-	margin-top:100px;
+	margin-top:10px;
 	display:block;
 	float:left;
 	overflow:hidden;
 	height:auto;
+}
+
+.paperthin {
+	background-color: #ffffff;
+	padding:20px;
+	/* margin-top:100px; */
+	display:inline-block;
+	float:left;
+	overflow:hidden;
+	height:100%;
+	min-height:550px;
+	width:200px;
+	text-align:center;
 }
 
 .papergraphics{
@@ -105,7 +118,17 @@ svg:hover{
 	padding-right:40px;
 
 	float:left;
-	margin:0;
+	margin:auto;
+	text-align:center;
+	display:inline-block;
+}
+
+.papergraphicsthin{
+	width:200px;
+	/* padding-right:40px; */
+
+	/* float:left; */
+	margin:auto;
 	text-align:center;
 	display:inline-block;
 }
@@ -118,7 +141,7 @@ svg:hover{
 
 .paperimgwide{
 	width:200px; 
-	margin:10px
+	margin:5px
 }
 
 .papertext {
